@@ -71,11 +71,21 @@ try {
     if ($os.Build -lt 17763) { throw 'winget needs Windows 10 1809 (build 17763) or later.' }
     if (-not $arch) { throw "Unsupported CPU architecture: $cpu" }
 
+    # winget.exe can be a leftover app execution alias whose package isn't registered for this user (for example
+    # after a debloat script). Running it then fails with "The file cannot be accessed by the system", so only
+    # count winget as installed if it actually runs.
+    $currentVersion = $null
     $current = Get-Command winget -ErrorAction SilentlyContinue
-    if ($current -and -not $Force) {
-        Write-Host "winget is already installed: $(& $current.Source --version). Use -Force to reinstall."
+    if ($current) {
+        try { $currentVersion = & $current.Source --version }
+        catch { Write-Host "Found $($current.Source) but it doesn't run: $($_.Exception.Message)" }
+    }
+    if ($currentVersion -and -not $Force) {
+        Write-Host "winget is already installed: $currentVersion. Use -Force to reinstall."
         return
     }
+    $pkg = Get-AppxPackage Microsoft.DesktopAppInstaller
+    Write-Host "App Installer for this user: $(if ($pkg) { "$($pkg.PackageFullName), status $($pkg.Status)" } else { 'not installed' })"
 
     Write-Step 'Looking up the winget release on GitHub'
     $api = if ($Version -eq 'latest') { 'https://api.github.com/repos/microsoft/winget-cli/releases/latest' }

@@ -85,5 +85,9 @@ Not used: `Downloads\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle` (an
   unattended scripts, add `--accept-source-agreements --accept-package-agreements`.
 - **Updates.** LTSC has no Store, so winget won't update itself. To update it, rerun the script with `-Force`
   (without `-Version`).
+- **"Program 'winget.exe' failed to run: The file cannot be accessed by the system".** `winget.exe` is a
+  leftover app execution alias, but App Installer isn't registered for this user. This often happens after
+  debloat scripts. The script detects this and installs anyway. Older copies of the script crashed here; run
+  them with `-Force`.
 - **Uninstall.** `Get-AppxPackage Microsoft.DesktopAppInstaller | Remove-AppxPackage`. This leaves the shared
   frameworks and any apps installed through winget in place.
