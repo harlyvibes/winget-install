@@ -1,0 +1,49 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261012005839
+Username: CLAUDEBOX\vboxuser
+RunAs User: CLAUDEBOX\vboxuser
+Configuration Name: 
+Machine: CLAUDEBOX (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Install-Winget.ps1 -Version v1.29.380
+Process ID: 756
+PSVersion: 5.1.19041.7725
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.7725
+BuildVersion: 10.0.19041.7725
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+==> Checking system
+Windows 10.0.19044.0, CPU AMD64 (x64), PowerShell 5.1.19041.7725, user vboxuser
+
+==> Looking up the winget release on GitHub
+Release v1.29.380, published 2026-09-21T18:45:34Z
+Download folder: C:\Users\vboxuser\AppData\Local\Temp\winget-install-20261012-005839
+
+==> Checking framework dependencies
+  OK       Microsoft.VCLibs.140.00 14.0.33519.0 (needs 14.0.33519.0)
+  OK       Microsoft.VCLibs.140.00.UWPDesktop 14.0.33728.0 (needs 14.0.33728.0)
+  OK       Microsoft.WindowsAppRuntime.1.8 8000.946.1701.0 (needs 8000.616.304.0)
+
+==> Downloading App Installer (winget)
+Downloading Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle (207.2 MB)
+  from https://github.com/microsoft/winget-cli/releases/download/v1.29.380/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+  SHA256 OK: 65DEA9C01CE08EE7B763366B27C0E651F97DB857C11CA9B9C301826C10092F2E
+  Signature OK: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+
+==> Installing App Installer
+Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+
+==> Verifying
+Installed package: Microsoft.DesktopAppInstaller_1.29.380.0_x64__8wekyb3d8bbwe
+winget --version: v1.29.380
+
+Done. Installers kept in C:\Users\vboxuser\AppData\Local\Temp\winget-install-20261012-005839
+**********************
+Windows PowerShell transcript end
+End time: 20261012005849
+**********************
